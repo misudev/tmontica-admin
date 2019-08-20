@@ -27,8 +27,6 @@ public interface MenuDao {
     @Select("SELECT * FROM menus WHERE id = #{id} AND deleted = 0")
     Menu getMenuById(int id);
 
-    @Select("SELECT * FROM menus WHERE deleted = 0 ORDER BY created_date DESC")
-    List<Menu> getAllMenus();
 
     @Select("SELECT * FROM menus WHERE deleted = 0 ORDER BY created_date DESC LIMIT #{limit} OFFSET #{offset}")
     List<Menu> getAllMenusByPage(int limit, int offset);
@@ -45,9 +43,6 @@ public interface MenuDao {
             "start_date = #{startDate}, end_Date = #{endDate},"+
             "updater_id = #{updaterId} WHERE id = #{id}")
     int updateMenu(Menu menu);
-
-    @Update("UPDATE menus SET stock = #{stock} WHERE id = #{id}")
-    void updateMenuStock(int id, int stock);
 
     @Delete("UPDATE menus SET deleted = 1 WHERE id = #{id}")
     int deleteMenu(int id);

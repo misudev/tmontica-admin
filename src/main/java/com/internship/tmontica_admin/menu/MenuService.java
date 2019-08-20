@@ -121,6 +121,7 @@ public class MenuService {
     }
 
     // 메뉴 수정하기
+    @Transactional
     public int updateMenu(Menu menu, List<Integer>optionIds, MultipartFile imgFile){
         if(!existMenu(menu.getId()))
             throw new MenuException(MenuExceptionType.MENU_NOT_EXIST_EXCEPTION);
